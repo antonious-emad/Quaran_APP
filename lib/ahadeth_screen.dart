@@ -7,6 +7,7 @@ class AhadethScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.amberAccent,
+
     );
   }
 }
