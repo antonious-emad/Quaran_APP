@@ -8,6 +8,7 @@ class AhadethScreen extends StatelessWidget {
     return Container(
 
       color: Colors.amberAccent,
+
     );
   }
 }
