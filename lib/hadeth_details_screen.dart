@@ -17,6 +17,7 @@ class _HadethDetailsScreenState extends State<HadethDetailsScreen> {
   Widget build(BuildContext context) {
     var args=ModalRoute.of(context)?.settings.arguments as AhadethModel;
 
+
     return SafeArea(
         child: Container(
           decoration: BoxDecoration(

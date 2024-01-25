@@ -31,6 +31,7 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
                 side: BorderSide(color: Colors.white,width: 2),
                 borderRadius: BorderRadius.circular(35)
               ),
+
               child: Padding(
                 padding: const EdgeInsets.all(15.0),
                 child: ListView.separated(
