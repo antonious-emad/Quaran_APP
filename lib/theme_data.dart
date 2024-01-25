@@ -19,6 +19,7 @@ import 'package:google_fonts/google_fonts.dart';
 
     ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      type: BottomNavigationBarType.shifting,
        showSelectedLabels: true,
       showUnselectedLabels: false,
       selectedItemColor:secondryLightColor,

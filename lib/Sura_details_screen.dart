@@ -34,7 +34,13 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
               child: Padding(
                 padding: const EdgeInsets.all(15.0),
                 child: ListView.separated(
-                    itemBuilder: (context, index) => Center(child: Text(verses[index],textAlign: TextAlign.center,style: Theme.of(context).textTheme.displaySmall,),),
+                    itemBuilder: (context, index) => Center(child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text("${verses[index]}",textDirection: TextDirection.rtl,textAlign: TextAlign.center,style: Theme.of(context).textTheme.displaySmall,),
+                        Directionality(textDirection: TextDirection.rtl,child: Text("{${index+1}}",textAlign: TextAlign.center,style: Theme.of(context).textTheme.displaySmall,)),
+                      ],
+                    ),),
                     separatorBuilder: (context, index) =>Divider(indent: 40,endIndent: 40,thickness: 2,color: Theming.primaryLightColor )
                     , itemCount: verses.length),
               ),
@@ -46,7 +52,7 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
   loadFile(int index) async{
     String File= await rootBundle.loadString("assets/files/${index+1}.txt");
     // Futur<String> File= rootBundle.loadString("assets/files/${index+1}.txt");
-    List<String> lines=File.split("\n");
+    List<String> lines=File.trim().split("\n");
     verses=lines;
     setState(() {});
   }
