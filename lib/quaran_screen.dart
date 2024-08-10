@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:second/Sura_details_screen.dart';
-import 'package:second/sura_model.dart';
-import 'package:second/theme_data.dart';
+import 'package:ElMoshaf/Sura_details_screen.dart';
+import 'package:ElMoshaf/sura_model.dart';
+import 'package:ElMoshaf/theme_data.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class QuranScreen extends StatefulWidget {
   @override
@@ -133,14 +135,14 @@ class _QuranScreenState extends State<QuranScreen> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Center(child: Image.asset("assets/images/qur2an_screen_logo.png")),
-        Divider(color: Theming.primaryLightColor,thickness: 3),
+        Divider(color: Theme.of(context).colorScheme.onError,thickness: 3),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Text("اسم السورة",style: Theme.of(context).textTheme.bodyMedium,),
+            Text(AppLocalizations.of(context)!.suranames,style: Theme.of(context).textTheme.bodyMedium,),
           ],
         ),
-        Divider(color: Theming.primaryLightColor,thickness: 3),
+        Divider(color:Theme.of(context).colorScheme.onError,thickness: 3),
         Expanded(
           child: ListView.separated(
               itemBuilder: (context, index) => InkWell(
@@ -158,7 +160,7 @@ class _QuranScreenState extends State<QuranScreen> {
                         ],
                       )),
               separatorBuilder: (context, index) =>
-                  Divider(color: Theming.primaryLightColor,thickness: 1,indent: 30,endIndent: 30,),
+                  Divider(color: Theme.of(context).colorScheme.onError,thickness: 1,indent: 30,endIndent: 30,),
               itemCount: suranames.length),
         )
       ],

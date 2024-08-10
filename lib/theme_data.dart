@@ -9,6 +9,7 @@ import 'package:google_fonts/google_fonts.dart';
    static Color secondrydarkColor=Color(0xFF141A2E);
 
    static ThemeData lightTheme=ThemeData(
+     colorScheme: ColorScheme(brightness: Brightness.light, primary: primaryLightColor, onPrimary:Colors.white, secondary: secondryLightColor, onSecondary: Colors.white, error: Colors.red, onError: primaryLightColor, background: primaryLightColor, onBackground:secondryLightColor, surface: primaryLightColor, onSurface: Colors.white),
     textTheme: TextTheme(
        bodySmall: GoogleFonts.elMessiri(fontSize: 20,fontWeight: FontWeight.w400,color:secondryLightColor),
       bodyMedium:GoogleFonts.elMessiri(fontSize: 25,fontWeight: FontWeight.w700,color:secondryLightColor),
@@ -30,7 +31,7 @@ import 'package:google_fonts/google_fonts.dart';
     ),
     scaffoldBackgroundColor: Colors.transparent,
     appBarTheme:  AppBarTheme(
-      iconTheme: IconThemeData(color: primaryLightColor,size: 35),
+      iconTheme: IconThemeData(color: Colors.black,size: 35),
       titleTextStyle: GoogleFonts.elMessiri(fontWeight: FontWeight.bold,fontSize: 30,color: secondryLightColor),
       color: Colors.transparent,
       elevation: 0.0,
@@ -38,10 +39,14 @@ import 'package:google_fonts/google_fonts.dart';
     ),
   );
   static ThemeData darkTheme=ThemeData(
+    colorScheme: ColorScheme(brightness: Brightness.dark, primary: secondrydarkColor, onPrimary:Colors.white, secondary: primarydarkColor, onSecondary: Colors.white, error: Colors.red, onError: primarydarkColor, background: secondrydarkColor, onBackground:Colors.white, surface: secondrydarkColor, onSurface: secondrydarkColor),
     textTheme: TextTheme(
       bodySmall: GoogleFonts.elMessiri(fontSize: 15,fontWeight: FontWeight.bold,color:primarydarkColor),
       bodyMedium:GoogleFonts.elMessiri(fontSize: 20,fontWeight: FontWeight.bold,color:primarydarkColor),
       bodyLarge:GoogleFonts.elMessiri(fontSize: 25,fontWeight: FontWeight.bold,color:primarydarkColor),
+      displaySmall: GoogleFonts.inter(fontSize: 20,fontWeight: FontWeight.w400,color:primarydarkColor),
+      displayMedium: GoogleFonts.inter(fontSize: 25,fontWeight: FontWeight.w700,color:primarydarkColor),
+      displayLarge: GoogleFonts.inter(fontSize: 30,fontWeight: FontWeight.bold,color:primarydarkColor),
     ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       showSelectedLabels: true,
@@ -54,8 +59,8 @@ import 'package:google_fonts/google_fonts.dart';
     ),
     scaffoldBackgroundColor: Colors.transparent,
     appBarTheme:  AppBarTheme(
-      iconTheme: IconThemeData(color: primarydarkColor,size: 35),
-      titleTextStyle: GoogleFonts.elMessiri(fontWeight: FontWeight.bold,fontSize: 30,color: secondryLightColor),
+      iconTheme: IconThemeData(color: Colors.white,size: 35),
+      titleTextStyle: GoogleFonts.elMessiri(fontWeight: FontWeight.bold,fontSize: 30,color: Colors.white),
       color: Colors.transparent,
       elevation: 0.0,
       centerTitle: true,

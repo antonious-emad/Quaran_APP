@@ -1,0 +1,20 @@
+{
+  "apptitle": "اسلامى",
+  "suranames": "أسم السورة",
+  "ahadeth": "الأحاديث",
+
+
+
+  "quran": "القرأن",
+  "sebha": "السبحة",
+  "radio":"الراديو",
+  "settings": "الاعدادات",
+  "language": "اللغة",
+  "theming": "الوضع",
+  "english": "English",
+  "arabic": "العربية",
+  "light": "مضئ",
+  "dark": "مظلم",
+  "numberOfTasbeh": "عدد التسابيح",
+  "radioOfEthicsQuran": "إذاعة القرآن الكريم"
+}

@@ -1,72 +1,78 @@
 import 'package:flutter/material.dart';
-import 'package:second/ahadeth_screen.dart';
-import 'package:second/quaran_screen.dart';
-import 'package:second/radio_screen.dart';
-import 'package:second/sebha_screen.dart';
-import 'package:second/settings_screen.dart';
-import 'package:second/theme_data.dart';
+import 'package:provider/provider.dart';
+import 'package:ElMoshaf/ahadeth_screen.dart';
+import 'package:ElMoshaf/quaran_screen.dart';
+import 'package:ElMoshaf/radio_page.dart';
+import 'package:ElMoshaf/sebha_page.dart';
+import 'package:ElMoshaf/settings_screen.dart';
+import 'package:ElMoshaf/theme_data.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class HomeScreen extends StatefulWidget {
+import 'Providers/provider.dart';
+
+class HomeScreen extends StatelessWidget {
   static const String routename = "/Home";
 
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
 
-class _HomeScreenState extends State<HomeScreen> {
-  int index = 0;
   List<Widget> tabs = [
     QuranScreen(),
     AhadethScreen(),
-    SebhaScreen(),
-    RadioScreen(),
+    SebhaPage(),
+    RadioPage(),
     SettingsScreen()
   ];
 
   @override
   Widget build(BuildContext context) {
+    var provider=Provider.of<MyProider>(context);
+
     return SafeArea(
         child: Stack(
       children: [
-        Image.asset(
+          provider.isDark?Image.asset(
+            "assets/images/dark_bg.png",
+            fit: BoxFit.cover,
+            width: double.infinity,
+          ) :Image.asset(
           "assets/images/default_bg.png",
           fit: BoxFit.cover,
           width: double.infinity,
         ),
-        Scaffold(
+          Scaffold(
           appBar: AppBar(
-            title: Text("Isalmi",style: Theme.of(context).textTheme.bodyLarge,),
+            title: Text(AppLocalizations.of(context)!.apptitle),
           ),
           bottomNavigationBar: BottomNavigationBar(
-            currentIndex: index,
+            currentIndex: provider.index,
             onTap: (value) {
-              index = value;
-              setState(() {});
+              provider.changeindex(value);
+              // index = value;
+              // setState(() {});
             },
             items: [
               BottomNavigationBarItem(
-                  backgroundColor: Theming.primaryLightColor,
-                  label: "Quaran",
+                  backgroundColor: Theme.of(context).colorScheme.background,
+                  label: AppLocalizations.of(context)!.quran,
                   icon: ImageIcon(AssetImage("assets/images/icon_quran.png"))),
               BottomNavigationBarItem(
-                  backgroundColor: Theming.primaryLightColor,
-                  label: "Ahadeth",
+                  backgroundColor: Theme.of(context).colorScheme.background,
+                  label: AppLocalizations.of(context)!.ahadeth,
                   icon: ImageIcon(AssetImage("assets/images/icon_hadeth.png"))),
               BottomNavigationBarItem(
-                  backgroundColor: Theming.primaryLightColor,
-                  label: "Sebha",
+                  backgroundColor: Theme.of(context).colorScheme.background,
+                  label:AppLocalizations.of(context)!.sebha,
                   icon: ImageIcon(AssetImage("assets/images/icon_sebha.png"))),
               BottomNavigationBarItem(
-                  backgroundColor: Theming.primaryLightColor,
-                  label: "Radio",
+                  backgroundColor: Theme.of(context).colorScheme.background,
+                  label:AppLocalizations.of(context)!.radio,
                   icon: ImageIcon(AssetImage("assets/images/icon_radio.png"))),
               BottomNavigationBarItem(
-                  backgroundColor: Theming.primaryLightColor,
-                  label: "Settings",
+                  backgroundColor: Theme.of(context).colorScheme.background,
+                  label:AppLocalizations.of(context)!.settings,
                   icon: Icon(Icons.settings)),
             ],
           ),
-          body: tabs[index],
+          body: tabs[provider.index],
         ),
       ],
     ));

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:second/sura_model.dart';
-import 'package:second/theme_data.dart';
-
+import 'package:provider/provider.dart';
+import 'package:ElMoshaf/Providers/provider.dart';
+import 'package:ElMoshaf/sura_model.dart';
+import 'package:ElMoshaf/theme_data.dart';
 class SuraDetailsScreen extends StatefulWidget {
   static const String routeNmae="SuraDetailsScreen";
 
@@ -15,20 +16,22 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var provider=Provider.of<MyProider>(context);
     var args=ModalRoute.of(context)?.settings.arguments as SuraModel;
     if(verses.isEmpty){loadFile(args.index);}
     return SafeArea(
         child: Container(
           decoration: BoxDecoration(
-            image: DecorationImage(image: AssetImage("assets/images/default_bg.png"),fit: BoxFit.cover)
+            image:provider.isDark?DecorationImage(image: AssetImage("assets/images/dark_bg.png"),fit: BoxFit.cover) :DecorationImage(image: AssetImage("assets/images/default_bg.png"),fit: BoxFit.cover)
           ),
           child: Scaffold(
               appBar: AppBar(title: Text(args.suraName),),
             body:Card(
+              color:Theme.of(context).colorScheme.onSurface,
               elevation: 10,
               margin: EdgeInsets.all(25),
               shape: RoundedRectangleBorder(
-                side: BorderSide(color: Colors.white,width: 2),
+                side: BorderSide(color: Theme.of(context).colorScheme.onSurface,width: 2),
                 borderRadius: BorderRadius.circular(35)
               ),
 
@@ -42,7 +45,7 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
                         Directionality(textDirection: TextDirection.rtl,child: Text("{${index+1}}",textAlign: TextAlign.center,style: Theme.of(context).textTheme.displaySmall,)),
                       ],
                     ),),
-                    separatorBuilder: (context, index) =>Divider(indent: 40,endIndent: 40,thickness: 2,color: Theming.primaryLightColor )
+                    separatorBuilder: (context, index) =>Divider(indent: 40,endIndent: 40,thickness: 2,color: Theme.of(context).colorScheme.onError )
                     , itemCount: verses.length),
               ),
             ) ,
